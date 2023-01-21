@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 <body>
-    <header class="header">
+    <header class="header" >
         <div class="container">
             <div class="header__wrapper">
                 <div class="logo">
                     <a href="#"><img src="img/logo.png" alt="logo"></a>
                 </div>
-                <div class="search">
+                <div class="search" data-searchHeader>
                     <img src="img/Search.png" alt="search" class="search__img">
                     <input type="text" class="search__input" placeholder="Найти...">
                 </div>
@@ -25,7 +25,7 @@
             </div>
         </div>
     </header>
-    <section class="partners">
+    <section class="partners" data-searchPartners>
         <div class="container">
             <h1 class="partners__title">наши партнёры</h1>
             <div class="cards">
@@ -39,5 +39,7 @@
             </div>
         </div>
     </section>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
