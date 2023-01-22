@@ -3,7 +3,7 @@
 const searchHeader = document.querySelector('[data-searchHeader'),
       addSearchPartners = document.querySelector('[data-searchPartners'),
       windowWidth = window.innerWidth,
-      mediaQuery = window.matchMedia("(max-width: 767px)"),
+      mediaQuery = window.matchMedia("(max-width: 768px)"),
       search = document.createElement('div');
 
 // Создание элемента
@@ -16,9 +16,9 @@ function createNewSearch() {
     <input type="text" class="search__input" placeholder="Найти...">
     `;
     //Добавление класса
-    search.classList.add('searchDown');
+    search.classList.add('search');
     //Пушим в верстку
-    addSearchPartners.prepend(search);
+    addSearchPartners.append(search);
 }
 
 // Удаление элемента
@@ -41,10 +41,10 @@ function changeSearch() {
 changeSearch();
 
 //Изменение структуры при изменении ширины
-mediaQuery.addListener(function(e) {
+mediaQuery.addEventListener('change', function(e) {
     if(e.matches) {
         createNewSearch();
     } else {
         removeNewSearch();
     }
-    });
+});
