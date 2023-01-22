@@ -1,36 +1,50 @@
 "use strict";
 
-const searchHeader = document.querySelector('[data-searchHeader]'),
+const searchHeader = document.querySelector('[data-searchHeader'),
       addSearchPartners = document.querySelector('[data-searchPartners'),
+      windowWidth = window.innerWidth,
       mediaQuery = window.matchMedia("(max-width: 767px)"),
       search = document.createElement('div');
 
+// Создание элемента
 function createNewSearch() {
-//Скрытие блока поиска в header
-searchHeader.style.display = 'none';
-//Создание нового блока поиска
-search.innerHTML = `
-<img src="img/Search.png" alt="search" class="search__img">
-<input type="text" class="search__input" placeholder="Найти...">
-`;
-//Добавление класса
-search.classList.add('searchDown');
-//Пушим в верстку
-addSearchPartners.prepend(search);
+    //Скрытие блока поиска в header
+    searchHeader.style.display = 'none';
+    //Создание нового блока поиска
+    search.innerHTML = `
+    <img src="img/Search.png" alt="search" class="search__img">
+    <input type="text" class="search__input" placeholder="Найти...">
+    `;
+    //Добавление класса
+    search.classList.add('searchDown');
+    //Пушим в верстку
+    addSearchPartners.prepend(search);
 }
 
+// Удаление элемента
 function removeNewSearch() {
-//Появление старого блока в header
-searchHeader.style.display = 'flex';
-//Удаление созданного блока
-search.remove();
+    //Появление старого блока в header
+    searchHeader.style.display = 'flex';
+    //Удаление созданного блока
+    search.remove();
 }
 
-//Слушатель на достужение ширины
-mediaQuery.addListener(function(e) {
-if(e.matches) {
-    createNewSearch();
-} else {
-    removeNewSearch();
+
+//Проверка первоначального положения ширины экрана
+function changeSearch() {
+    if (windowWidth < 768) {
+        createNewSearch();
+    } else if(windowWidth >= 768){
+        removeNewSearch();
+    }
 }
-});
+changeSearch();
+
+//Изменение структуры при изменении ширины
+mediaQuery.addListener(function(e) {
+    if(e.matches) {
+        createNewSearch();
+    } else {
+        removeNewSearch();
+    }
+    });
